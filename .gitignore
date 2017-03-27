@@ -12,6 +12,8 @@ Desktop.ini
 .directory
 *~
 
+#vim
+*.swp
 
 # npm
 node_modules

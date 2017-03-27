@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/kevdez/moss#readme",
   "dependencies": {
-    "blessed": "^0.1.81"
+    "blessed": "^0.1.81",
+    "spotify-web-api-node": "^2.3.6"
   }
 }
