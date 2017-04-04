@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "a music player for the terminal",
   "main": "index.js",
-  "scripts": {
-    "test": "test"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kevdez/moss.git"
@@ -22,8 +19,21 @@
     "url": "https://github.com/kevdez/moss/issues"
   },
   "homepage": "https://github.com/kevdez/moss#readme",
+  "bin": "./bin/moss.js",
+  "scripts": {
+    "test": "test",
+    "prebuild": "rimraf bin",
+    "build": "babel src -d bin",
+    "postbuild": "npm link"
+  },
   "dependencies": {
     "blessed": "^0.1.81",
-    "spotify-web-api-node": "^2.3.6"
+    "pty.js": "^0.3.1",
+    "spotify-web-api-node": "^2.3.6",
+    "term.js": "^0.0.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "rimraf": "^2.6.1"
   }
 }
