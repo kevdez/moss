@@ -23,3 +23,5 @@ node_modules
 
 # Coveralls
 coverage
+
+config/spotify.json

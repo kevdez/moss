@@ -1,16 +1,15 @@
 #! /usr/bin/env node
 
+var blessed = require('blessed'); // Create a screen object.
 
-const blessed = require('blessed');
 
-// Create a screen object.
-var screen = blessed.screen({ smartCSR: true });
-
-screen.key('q', () => {
+var screen = blessed.screen({
+  smartCSR: true
+});
+screen.key('q', function () {
   process.exit(0);
 });
-
-const yourMusicList = blessed.list({
+var yourMusicList = blessed.list({
   top: 0,
   left: 0,
   width: '30%',
@@ -20,18 +19,17 @@ const yourMusicList = blessed.list({
   },
   style: {
     selected: {
-      fg: 'green', bg: 'blue'
+      fg: 'green',
+      bg: 'blue'
     }
   }
 });
-
 yourMusicList.setItems(['Your music', 'Browse', 'Radio']);
-screen.key('up', () => {
+screen.key('up', function () {
   yourMusicList.up(1);
   screen.render();
 });
-
-const playlistList = blessed.list({
+var playlistList = blessed.list({
   bottom: 0,
   left: 0,
   width: '30%',
@@ -41,21 +39,21 @@ const playlistList = blessed.list({
   },
   style: {
     selected: {
-      fg: 'green', bg: 'black'
+      fg: 'green',
+      bg: 'black'
     }
   }
 });
 playlistList.setItems(['Playlists', 'Discover Weekly', 'Deep House Relax', 'Ambient Chill', 'This Is: Animal Collective']);
-screen.key('up', () => {
+screen.key('up', function () {
   playlistList.up(1);
   screen.render();
 });
-
-screen.key('down', () => {
+screen.key('down', function () {
   playlistList.down(1);
   screen.render();
 });
-const blueBox = blessed.box({
+var blueBox = blessed.box({
   height: 10,
   width: 10,
   style: {
@@ -64,11 +62,10 @@ const blueBox = blessed.box({
   },
   draggable: true
 });
-blueBox.setContent('10 by 10');
+blueBox.setContent('10 by 10'); // Append the widgets to the screen
 
-// Append the widgets to the screen
 screen.append(yourMusicList);
 screen.append(blueBox);
-screen.append(playlistList);
-// Render the screen.
+screen.append(playlistList); // Render the screen.
+
 screen.render();
